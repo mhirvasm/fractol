@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 08:09:31 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/05 13:55:25 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:23:20 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	events_init(t_fractal *fractal)
 			KeyPressMask,
 			key_handler,
 			fractal);
-	mlx_hook(fractal->mlx_window,
+	/*mlx_hook(fractal->mlx_window,
 			ButtonPress,
 			ButtonPressMask,
 			key_handler,
-			fractal);
+			fractal);*/
 	mlx_hook(fractal->mlx_window,
 			DestroyNotify,
 			StructureNotifyMask,
-			key_handler,
+			close_handler,
 			fractal);
 }
 

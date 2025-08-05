@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:06:52 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/05 13:53:09 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:15:32 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ double map(double unscaled_num, double new_min, double new_max, double old_min, 
 t_complex	square_complex(t_complex z);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 
-int	key_handler(int keysym, t_fractal *fractal);
+int			key_handler(int keysym, t_fractal *fractal);
+int			close_handler(t_fractal *fractal);
 
 #endif
