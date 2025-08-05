@@ -1,30 +1,44 @@
 NAME = fractol
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror $(CF)
 
-SRCS_FRACTOL = fractol.c complex_plane.c
+# Sources and objects
+SRC = fractol.c init.c math_utils.c render.c events.c
+OBJ = $(SRC:.c=.o)
 
+# Libft
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-all: $(LIBFT) $(NAME_SERVER) $(NAME_CLIENT)
+# MiniLibX (Linux)
+MLX_DIR = minilibx-linux
+MLX_FLAGS = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
 
+# Default rule
+all: $(LIBFT) $(NAME)
+
+# Build libft
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-$(NAME_SERVER): $(SRCS_SERVER)
-	$(CC) $(CFLAGS) -o $(NAME_SERVER) $(SRCS_SERVER) $(LIBFT)
+# Build fractol
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
-$(NAME_CLIENT): $(SRCS_CLIENT)
-	$(CC) $(CFLAGS) -o $(NAME_CLIENT) $(SRCS_CLIENT) $(LIBFT)
+# Compile source files to objects
+%.o: %.c
+	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(MLX_DIR) -O3 -c $< -o $@
 
-
+# Clean object files
 clean:
 	make clean -C $(LIBFT_DIR)
+	rm -f $(OBJ)
 
+# Clean all
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
-	rm -f $(NAME_SERVER) $(NAME_CLIENT)
+	rm -f $(NAME)
 
+# Rebuild all
 re: fclean all
