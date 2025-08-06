@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 09:17:49 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/05 12:00:37 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/06 13:46:14 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,4 @@ t_complex	square_complex(t_complex z)
 	result.y = 2 * z.x * z.y;
 	return (result);
 }
+

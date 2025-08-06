@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:06:52 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/05 14:15:32 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:23:08 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <stdio.h> //TODO DEBUGGING
 
 //Use square to keep rendering math simple
-# define WIDTH	800
-# define HEIGHT 800
+# define WIDTH	1600
+# define HEIGHT 1600
 
 // Basic colors
 # define COLOR_BLACK        0x000000
@@ -82,7 +82,9 @@ typedef struct s_fractal
 	int		iterations; // value tied with the image quality and render time 
 	double	shift_x;
 	double	shift_y;
-	
+	double	zoom;
+	double	julia_x;
+	double	julia_y;
 	
 }	t_fractal;
 
@@ -91,18 +93,20 @@ typedef struct s_fractal
 */
 
 //** init **/
-void	fractal_init(t_fractal *fractal);
-void	data_init(t_fractal *fractal);
+void		fractal_init(t_fractal *fractal);
+void		data_init(t_fractal *fractal);
 
 /** render */
-void	fractal_render(t_fractal *fractal);
+void		fractal_render(t_fractal *fractal);
 
 //** math */
 double map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 t_complex	square_complex(t_complex z);
 t_complex	sum_complex(t_complex z1, t_complex z2);
+double		ft_atodbl(char *str);
 
 int			key_handler(int keysym, t_fractal *fractal);
+int			handler(int button, int x, int y, t_fractal *fractal);
 int			close_handler(t_fractal *fractal);
 
 #endif

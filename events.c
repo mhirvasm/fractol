@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 13:34:15 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/05 14:34:20 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/06 13:42:24 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	key_handler(int keysym, t_fractal *fractal)
 	if (keysym == XK_Escape)
 		close_handler(fractal);
 	if (keysym == XK_Left)
-	fractal->shift_x += 0.1;
+	fractal->shift_x -= (0.5 * fractal->zoom);
 	else if (keysym == XK_Right)
-	fractal->shift_x -= 0.1;
+	fractal->shift_x += (0.5 * fractal->zoom);
 	else if (keysym == XK_Up)
-	fractal->shift_y -= 0.1;
+	fractal->shift_y += (0.5 * fractal->zoom);
 	else if (keysym == XK_Down)
-	fractal->shift_y += 0.1;
+	fractal->shift_y -= (0.5 * fractal->zoom);
 	else if (keysym == XK_p)//TODO pluus  doesnt work
 	fractal->iterations += 10;
 	else if (keysym == XK_m)
@@ -44,5 +44,20 @@ int	key_handler(int keysym, t_fractal *fractal)
 	//refresh the image
 	fractal_render(fractal);
 	
+	return (0);
+}
+int	handler(int button, int x, int y, t_fractal *fractal)
+{
+	(void)x;
+	(void)y;
+	if (button == Button5)
+	{
+		fractal->zoom *= 0.95;
+	}
+	else if (button == Button4)
+	{
+		fractal->zoom *= 1.05;
+	}
+	fractal_render(fractal);
 	return (0);
 }

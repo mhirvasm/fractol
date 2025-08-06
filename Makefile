@@ -4,7 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror $(CF)
 
 # Sources and objects
-SRC = fractol.c init.c math_utils.c render.c events.c
+SRC = fractol.c init.c math_utils.c render.c events.c ft_atodbl.c
 OBJ = $(SRC:.c=.o)
 
 # Libft

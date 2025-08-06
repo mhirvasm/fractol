@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:06:51 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/05 14:32:21 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:36:40 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	main(int argc, char *argv[])
 		{
 			
 			fractal.name = argv[1];
+			if (!ft_strncmp(fractal.name, "julia", 5))
+			{
+			fractal.julia_x = ft_atodbl(argv[2]);
+			fractal.julia_y = ft_atodbl(argv[3]);
+			}
 			//TL;DR
 			//PROMPT correct, kick off the application
 			//1)
@@ -39,19 +44,4 @@ int	main(int argc, char *argv[])
 		write(2, "Error", 6);
 		exit(EXIT_FAILURE);
 	}
-
-	/*
-	🧠 Tips for Early Progress
-	✅ Start by drawing a static Mandelbrot fractal.
-
-	✅ Add zoom with mouse scroll.
-
-	✅ Then implement Julia set with parameters.
-
-	✅ Only after that, move to events & colors.
-
-	🧪 Use debug printouts and test at each step.*/
-	
-
-	
 }
