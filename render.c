@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 09:04:15 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/06 15:39:38 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/13 12:58:20 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	int			color;
 
 	i = 0;
-	
+
 	// pixel coordinate x && y scaled to fit mandelbrot needs
-	z.x =  (map(x, -2, +2, 0,  WIDTH) * fractal->zoom) + fractal->shift_x;
-	z.y = (map(y, +2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	z.x =  (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
+	z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
 
 	mandel_vs_julia(&z, &c, fractal);
 
@@ -64,14 +64,14 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 		//Is the value escaped?
 		if ((z.x *z.x) + (z.y *z.y) > fractal->escape_value)
 		{
-			color = map(i, COLOR_BLACK, COLOR_WHITE, 0, fractal->iterations);
+			color = map(i, COLOR_BLACK, COLOR_WHITE, fractal->iterations);
 			pixel_put(x, y, &fractal->img, color); //TODO
 			return ;
 		}
 		i++;
 	}
 	// We are in Mandelbrot set
-	pixel_put(x, y, &fractal->img, COLOR_COSMIC_BLUE);
+	pixel_put(x, y, &fractal->img, COLOR_ACID_GREEN);
 }
 
 void	fractal_render(t_fractal *fractal)
@@ -93,6 +93,3 @@ void	fractal_render(t_fractal *fractal)
 							fractal->img.img_ptr,
 							0, 0);
 }
-
-/*
-For Julia ./fractol julia <real> <img>*/

@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 09:17:49 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/06 13:46:14 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/13 12:56:41 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 [0..799] -> [-2..+2]
 */
 
-double map(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
+double map(double unscaled_num, double new_min, double new_max, double old_max)
 {
-	return (new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min;
+	return (new_max - new_min) * unscaled_num / old_max + new_min;
 }
 
 t_complex	sum_complex(t_complex z1, t_complex z2)
@@ -32,9 +32,6 @@ t_complex	sum_complex(t_complex z1, t_complex z2)
 
 t_complex	square_complex(t_complex z)
 {
-	// real = (x^2 - y^2)
-	// i = 2*x*y
-	
 	t_complex	result;
 	
 	result.x = (z.x *z.x) - (z.y * z.y);

@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:06:52 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/06 15:23:08 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:51:33 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 # include <math.h>
 # include "minilibx-linux/mlx.h"
 # include <X11/X.h> // KeyPress, KeyMask and so on.
-#include <X11/keysym.h>
-# include <stdio.h> //TODO DEBUGGING
+# include <X11/keysym.h>
+
+//ERROR MESSAGE
+#define ERROR_MESSAGE "Please enter \n\t""./fractol mandelbrot\" or \n\t""./fractol julia <value_1> <value2>\""
 
 //Use square to keep rendering math simple
-# define WIDTH	1600
-# define HEIGHT 1600
+# define WIDTH	800
+# define HEIGHT 800
 
 // Basic colors
 # define COLOR_BLACK        0x000000
@@ -100,7 +102,7 @@ void		data_init(t_fractal *fractal);
 void		fractal_render(t_fractal *fractal);
 
 //** math */
-double map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
+double map(double unscaled_num, double new_min, double new_max, double old_max);
 t_complex	square_complex(t_complex z);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 double		ft_atodbl(char *str);

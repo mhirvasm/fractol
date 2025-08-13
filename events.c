@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 13:34:15 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/06 13:42:24 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:50:04 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ int	key_handler(int keysym, t_fractal *fractal)
 	fractal->shift_y += (0.5 * fractal->zoom);
 	else if (keysym == XK_Down)
 	fractal->shift_y -= (0.5 * fractal->zoom);
-	else if (keysym == XK_p)//TODO pluus  doesnt work
+	else if (keysym == XK_p)
 	fractal->iterations += 10;
 	else if (keysym == XK_m)
 	fractal->iterations -= 10;
-	
 
-	//refresh the image
 	fractal_render(fractal);
 	
 	return (0);
@@ -52,11 +50,11 @@ int	handler(int button, int x, int y, t_fractal *fractal)
 	(void)y;
 	if (button == Button5)
 	{
-		fractal->zoom *= 0.95;
+		fractal->zoom *= 0.98;
 	}
 	else if (button == Button4)
 	{
-		fractal->zoom *= 1.05;
+		fractal->zoom *= 1.02;
 	}
 	fractal_render(fractal);
 	return (0);
