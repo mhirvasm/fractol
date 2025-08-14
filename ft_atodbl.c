@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:47:19 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/06 17:42:29 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/14 09:01:44 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ double	ft_atodbl(char *str)
 	}
 	return (n * sign);
 }
-
