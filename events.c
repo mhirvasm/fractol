@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 13:34:15 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/14 08:45:32 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/16 12:43:10 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,10 @@ int	handler(int button, int x, int y, t_fractal *fractal)
 		fractal->zoom *= 1.02;
 	fractal_render(fractal);
 	return (0);
+}
+
+void	error_and_exit(void)
+{
+	ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
+	exit(EXIT_FAILURE);
 }

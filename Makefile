@@ -1,10 +1,10 @@
 NAME = fractol
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror $(CF)
+CFLAGS = -Wall -Wextra -Werror -O3  -ffast-math
 
 # Sources and objects
-SRC = fractol.c init.c math_utils.c render.c events.c ft_atodbl.c
+SRC = fractol.c init.c math_utils.c render.c events.c ft_atodbl.c ft_strcmp.c
 OBJ = $(SRC:.c=.o)
 
 # Libft
@@ -24,11 +24,11 @@ $(LIBFT):
 
 # Build fractol
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) -flto  $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
 # Compile source files to objects
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(MLX_DIR) -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(MLX_DIR) -c $< -o $@
 
 # Clean object files
 clean:

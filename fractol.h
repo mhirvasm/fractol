@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:06:52 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/14 09:01:08 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/16 12:43:20 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,12 @@ void		fractal_render(t_fractal *fractal);
 double		map(double unscaled_num, double min, double max, double old_max);
 t_complex	square_complex(t_complex z);
 t_complex	sum_complex(t_complex z1, t_complex z2);
-double		ft_atodbl(char *str);
-
+int			ft_atodbl(char *str, double *output);
+//** events */
 int			key_handler(int keysym, t_fractal *fractal);
 int			handler(int button, int x, int y, t_fractal *fractal);
 int			close_handler(t_fractal *fractal);
+int			ft_strcmp(char *s1, char *s2);
+void		error_and_exit(void);
 
 #endif
