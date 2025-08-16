@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 09:04:15 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/14 09:09:44 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:06:31 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static	void	pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixels_ptr + offset) = color;
 }
 
-static void	mandel_vs_julia(t_complex *z, t_complex *c, t_fractal *fractal)
+static void	mandel_or_julia(t_complex *z, t_complex *c, t_fractal *fractal)
 {
 	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
@@ -44,7 +44,7 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.x = (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
 	z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
-	mandel_vs_julia(&z, &c, fractal);
+	mandel_or_julia(&z, &c, fractal);
 	while (i < fractal->iterations)
 	{
 		z = sum_complex(square_complex(z), c);
