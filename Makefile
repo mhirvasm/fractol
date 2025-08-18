@@ -1,44 +1,59 @@
-NAME = fractol
+# =========================
+# Project
+# =========================
+NAME    = fractol
+CC      = cc
+CFLAGS  = -Wall -Wextra -Werror -O3 -ffast-math
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -O3  -ffast-math
+SRC     = fractol.c init.c math_utils.c render.c events.c ft_atodbl.c ft_strcmp.c
+OBJ     = $(SRC:.c=.o)
 
-# Sources and objects
-SRC = fractol.c init.c math_utils.c render.c events.c ft_atodbl.c ft_strcmp.c
-OBJ = $(SRC:.c=.o)
-
+# =========================
 # Libft
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
+# =========================
+LIBFT_DIR   = libft
+LIBFT       = $(LIBFT_DIR)/libft.a
 
+# =========================
 # MiniLibX (Linux)
-MLX_DIR = minilibx-linux
-MLX_FLAGS = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
+# =========================
+MLX_DIR     = minilibx-linux
+MLX_LIB     = $(MLX_DIR)/libmlx_Linux.a
+MLX_FLAGS   = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
 
-# Default rule
-all: $(LIBFT) $(NAME)
+# =========================
+# Rules
+# =========================
+.PHONY: all clean fclean re libft mlx clean_mlx
 
-# Build libft
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+all: $(LIBFT) $(MLX_LIB) $(NAME)
 
-# Build fractol
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -flto  $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(OBJ) $(LIBFT) $(MLX_LIB)
+	$(CC) $(CFLAGS) -flto $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
-# Compile source files to objects
+# Objects
 %.o: %.c
 	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(MLX_DIR) -c $< -o $@
 
-# Clean object files
+# Build libft via its own Makefile
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
+# Build MLX so that lib exists
+mlx: $(MLX_LIB)
+$(MLX_LIB):
+	$(MAKE) -C $(MLX_DIR)
+
+# Clean only our objects (always safe)
 clean:
-	make clean -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) clean_mlx
 	rm -f $(OBJ)
 
-# Clean all
+# Clean everything we own; MLX usually doesn’t have fclean, so call clean
 fclean: clean
-	make fclean -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
-# Rebuild all
+# Rebuild
 re: fclean all

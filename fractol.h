@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:06:52 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/16 12:43:20 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/18 15:49:22 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <X11/X.h> // KeyPress, KeyMask and so on.
 # include <X11/keysym.h>
 
-//ERROR MESSAGE
-// ERROR MESSAGE
 // ERROR MESSAGE
 # define ERROR_MESSAGE "Use: ./fractol mandelbrot\n\t./fractol julia <v1> <v2>"
 
@@ -50,9 +48,6 @@
 # define COLOR_COSMIC_BLUE  0x2E2D88
 # define COLOR_FLUO_YELLOW  0xF3FF00
 
-/*
-*COMPLEX value
-*/
 
 typedef struct s_complex
 {
