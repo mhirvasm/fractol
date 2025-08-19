@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 13:34:15 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/16 12:43:10 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/19 07:46:19 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ int	close_handler(t_fractal *fractal)
 
 int	key_handler(int keysym, t_fractal *fractal)
 {
-	if (keysym == XK_Escape)
+	if (keysym == KEY_ESC)
 		close_handler(fractal);
-	if (keysym == XK_Left)
-		fractal->shift_x -= (0.5 * fractal->zoom);
-	else if (keysym == XK_Right)
-		fractal->shift_x += (0.5 * fractal->zoom);
-	else if (keysym == XK_Up)
-		fractal->shift_y += (0.5 * fractal->zoom);
-	else if (keysym == XK_Down)
-		fractal->shift_y -= (0.5 * fractal->zoom);
-	else if (keysym == XK_p)
+	if (keysym == KEY_LEFT)
+		fractal->shift_x -= (0.3 * fractal->zoom);
+	else if (keysym == KEY_RIGHT)
+		fractal->shift_x += (0.3 * fractal->zoom);
+	else if (keysym == KEY_UP)
+		fractal->shift_y += (0.3 * fractal->zoom);
+	else if (keysym == KEY_DOWN)
+		fractal->shift_y -= (0.3 * fractal->zoom);
+	else if (keysym == KEY_PLUS)
 		fractal->iterations += 10;
-	else if (keysym == XK_m)
+	else if (keysym == KEY_MINUS)
 		fractal->iterations -= 10;
 	fractal_render(fractal);
 	return (0);
@@ -47,9 +47,9 @@ int	handler(int button, int x, int y, t_fractal *fractal)
 {
 	(void)x;
 	(void)y;
-	if (button == Button5)
+	if (button == MOUSE_SCROLL_UP)
 		fractal->zoom *= 0.98;
-	else if (button == Button4)
+	else if (button == MOUSE_SCROLL_DN)
 		fractal->zoom *= 1.02;
 	fractal_render(fractal);
 	return (0);

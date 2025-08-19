@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:06:52 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/18 15:49:22 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/19 07:51:58 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <stdlib.h>
 # include <math.h>
 # include "minilibx-linux/mlx.h"
-# include <X11/X.h> // KeyPress, KeyMask and so on.
-# include <X11/keysym.h>
 
 // ERROR MESSAGE
 # define ERROR_MESSAGE "Use: ./fractol mandelbrot\n\t./fractol julia <v1> <v2>"
@@ -48,7 +46,32 @@
 # define COLOR_COSMIC_BLUE  0x2E2D88
 # define COLOR_FLUO_YELLOW  0xF3FF00
 
+/* ──────────────── EVENTS & KEYCODES (Linux / X11) ──────────────── */
 
+/* Events */
+# define EVENT_KEY_PRESS       2
+# define EVENT_BUTTON_PRESS    4
+# define EVENT_DESTROY_NOTIFY  17
+
+/* Masks */
+# define MASK_KEY_PRESS        1L
+# define MASK_BUTTON_PRESS     4L
+# define MASK_STRUCTURE_NOTIFY 131072L
+
+/* Keyboard keys */
+# define KEY_ESC     65307
+# define KEY_LEFT    65361
+# define KEY_UP      65362
+# define KEY_RIGHT   65363
+# define KEY_DOWN    65364
+# define KEY_PLUS    61     /* '+' */
+# define KEY_MINUS   45     /* '-' */
+
+/* Mouse buttons */
+# define MOUSE_SCROLL_UP   4
+# define MOUSE_SCROLL_DN   5
+
+/* ------------------------------------------------------------------- */
 typedef struct s_complex
 {
 	//		real
