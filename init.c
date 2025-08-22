@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 08:09:31 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/19 07:31:16 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/22 12:16:42 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	data_init(t_fractal *fractal)
 	fractal->shift_x = 0;
 	fractal->shift_y = 0;
 	fractal->zoom = 1.0;
+	fractal->color = COLOR_COSMIC_BLUE;
 }
 
 void	events_init(t_fractal *fractal)

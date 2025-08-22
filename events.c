@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 13:34:15 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/19 07:46:19 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/22 12:31:14 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ int	key_handler(int keysym, t_fractal *fractal)
 		fractal->iterations += 10;
 	else if (keysym == KEY_MINUS)
 		fractal->iterations -= 10;
+	else if (keysym == KEY_C)
+	{
+		if (fractal->color == COLOR_HOT_PINK)
+			fractal->color = COLOR_PSY_RED;
+		else
+			fractal->color = COLOR_HOT_PINK;
+	}
 	fractal_render(fractal);
 	return (0);
 }

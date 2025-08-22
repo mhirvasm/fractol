@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 09:04:15 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/16 15:06:31 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/22 12:27:29 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = map(i, COLOR_BLACK, COLOR_WHITE, fractal->iterations);
+			color = map(i, COLOR_FLUO_YELLOW, fractal->color,
+					fractal->iterations);
 			pixel_put(x, y, &fractal->img, color);
 			return ;
 		}
 		i++;
 	}
-	pixel_put(x, y, &fractal->img, COLOR_PSY_RED);
+	pixel_put(x, y, &fractal->img, fractal->color);
 }
 
 void	fractal_render(t_fractal *fractal)

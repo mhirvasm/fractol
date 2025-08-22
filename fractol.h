@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:06:52 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/08/19 07:51:58 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/08/22 12:27:51 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@
 # define KEY_DOWN    65364
 # define KEY_PLUS    61     /* '+' */
 # define KEY_MINUS   45     /* '-' */
+# define KEY_C		 99
 
 /* Mouse buttons */
 # define MOUSE_SCROLL_UP   4
@@ -106,6 +107,7 @@ typedef struct s_fractal
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
+	int		color;
 
 }	t_fractal;
 
